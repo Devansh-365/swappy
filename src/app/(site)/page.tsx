@@ -96,10 +96,10 @@ export default function Home() {
           />
         </div>
         <div className="mx-auto max-w-[120rem] px-8 text-center pt-24 relative">
-          <h1 className="my-6 text-4xl text-gray-50 dark:text-gray-50 md:text-6xl font-bold">
-            Exchange your position
+          <h1 className="my-6 text-3xl text-gray-50 dark:text-gray-50 md:text-6xl font-bold">
+            Would you change of job? Find someone to exchange with you!
           </h1>
-          <p className="mx-auto mb-12 max-w-2xl font-semibold leading-6 text-lg md:text-xl text-gray-200 dark:text-gray-200">
+          <p className="mx-auto mb-12 max-w-2xl font-semibold leading-6 text-md md:text-xl text-gray-200 dark:text-gray-200">
             {`Welcome to Swappy, the platform for IT talents, whether you're a freelancer or an employee!`}{" "}
           </p>
           <div className="mx-auto text-center group w-full flex justify-center items-center">
