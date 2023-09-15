@@ -10,7 +10,7 @@ export function UserAvatar({ user, ...props }: any) {
         <AvatarImage alt="Picture" src={user.image} />
       ) : (
         <AvatarFallback>
-          <span className="sr-only">{user.name}</span>
+          <span className="sr-only">kk</span>
           <User2 className="h-4 w-4" />
         </AvatarFallback>
       )}
