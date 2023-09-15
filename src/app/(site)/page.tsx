@@ -14,7 +14,6 @@ const countries = [
   "latin america",
   "north america",
   "oceanina",
-  "oceanina",
   "africa",
   "middle east",
 ];
