@@ -84,7 +84,7 @@ const users = [
 export default function Home() {
   return (
     <>
-      <section className="relative w-screen h-[562px]">
+      <section className="relative w-screen h-[660px] lg:h-[562px]">
         <div className="-z-10">
           <Image
             priority
@@ -96,8 +96,8 @@ export default function Home() {
           />
         </div>
         <div className="mx-auto max-w-[120rem] px-8 text-center pt-24 relative">
-          <h1 className="my-6 text-3xl text-gray-50 dark:text-gray-50 md:text-6xl font-bold">
-            Would you change of job? Find someone to exchange with you!
+          <h1 className="my-6 text-3xl text-gray-50 dark:text-gray-50 md:text-5xl font-bold">
+            Would you consider changing your job? Find someone to swap with you!
           </h1>
           <p className="mx-auto mb-12 max-w-2xl font-semibold leading-6 text-md md:text-xl text-gray-200 dark:text-gray-200">
             {`Welcome to Swappy, the platform for IT talents, whether you're a freelancer or an employee!`}{" "}
