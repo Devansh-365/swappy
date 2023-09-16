@@ -36,15 +36,15 @@ export default function LoginPage() {
         <div className="flex flex-col space-y-3 px-4 py-6 sm:px-16">
           <AuthForm />
 
-          <p className="text-center text-sm underline text-gray-500">
+          <Link
+            href="/register"
+            className="text-center text-sm underline text-gray-500"
+          >
             {`Don't have an account?`}{" "}
-            <Link
-              href="/register"
-              className="font-semibold text-gray-500 transition-colors hover:text-black"
-            >
+            <span className="font-semibold text-gray-500 transition-colors hover:text-black">
               Sign up
-            </Link>
-          </p>
+            </span>
+          </Link>
         </div>
       </div>
     </div>

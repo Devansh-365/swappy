@@ -55,13 +55,15 @@ const AuthForm = ({ className, ...props }: AuthFormProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log("USER: ", values);
       await signIn("credentials", {
         email: values.email.toLowerCase(),
         password: values.password,
         redirect: false,
         callbackUrl,
       });
+
+      router.refresh();
+      router.push(`/`);
 
       toast.success("User logged in!");
     } catch (error) {

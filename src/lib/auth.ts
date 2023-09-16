@@ -30,6 +30,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
+    newUser: "/register",
   },
   providers: [
     GoogleProvider({
@@ -114,4 +115,5 @@ export const authOptions: NextAuthOptions = {
       };
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };

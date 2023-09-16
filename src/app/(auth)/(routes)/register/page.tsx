@@ -36,15 +36,15 @@ export default function RegisterPage() {
         <div className="flex flex-col space-y-3 px-4 py-6 sm:px-16">
           <RegisterForm />
 
-          <p className="text-center text-sm text-gray-500">
+          <Link
+            href="/login"
+            className="text-center text-sm text-gray-500 underline"
+          >
             {`Already have an account?`}{" "}
-            <Link
-              href="/login"
-              className="font-semibold text-gray-500 transition-colors hover:text-black"
-            >
+            <span className="font-semibold text-gray-500 transition-colors hover:text-black">
               Login
-            </Link>
-          </p>
+            </span>
+          </Link>
         </div>
       </div>
     </div>

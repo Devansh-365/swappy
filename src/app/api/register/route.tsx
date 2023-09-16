@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user);
   } catch (error) {
-    console.log(error);
+    console.log("USER REGISTER : ", error);
     return new NextResponse(null, { status: 500 });
   }
 }

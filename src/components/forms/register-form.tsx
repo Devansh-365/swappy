@@ -55,7 +55,6 @@ const RegisterForm = ({ className, ...props }: AuthFormProps) => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      console.log("USER: ", values);
       axios.post(`/api/register`, {
         email: values.email.toLowerCase(),
         password: values.password,

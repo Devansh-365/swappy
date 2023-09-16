@@ -22,38 +22,47 @@ const roles = [
   {
     value: "front-end developer",
     label: "Front-end developer",
+    country: "Paris",
   },
   {
     value: "back-end developer",
     label: "Back-end developer",
+    country: "Paris",
   },
   {
     value: "fullstack developer",
     label: "Fullstack developer",
+    country: "Paris",
   },
   {
     value: "ios developer",
     label: "IOS developer",
+    country: "Paris",
   },
   {
     value: "blockchain developer",
     label: "Blockchain developer",
+    country: "Paris",
   },
   {
     value: "ux designer",
     label: "UX designer",
+    country: "Paris",
   },
   {
     value: "product owner",
     label: "Product Owner",
+    country: "Paris",
   },
   {
     value: "product manager",
     label: "Product Manager",
+    country: "Paris",
   },
   {
     value: "scrum master",
     label: "Scrum Master",
+    country: "Paris",
   },
 ];
 
@@ -130,7 +139,7 @@ export default function Home() {
           <PricePicker />
           <Button variant="swappy">Explore Now</Button>
         </div>
-        <div className="pt-12 grid grid-cols-1 gap-6 md:gid-cols-3 lg:grid-cols-4 lg:gap-8">
+        <div className="pt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
           {roles.map((role, i) => (
             <PopupCard role={role} key={i} />
           ))}
