@@ -20,7 +20,7 @@ export default async function Navbar() {
                   variant: "swappy",
                   className: "rounded-full mr-2 lg:mr-4 bg-[#F03D4E]",
                 })}
-                href="#"
+                href="/login"
               >
                 Join to Swappy
               </Link>

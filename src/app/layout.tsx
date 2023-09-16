@@ -1,7 +1,9 @@
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Quicksand } from "next/font/google";
+import { NextAuthProvider } from "@/components/providers/auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const quicksand = Quicksand({ subsets: ["latin"] });
@@ -19,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={quicksand.className}>
-        <ModalProvider />
+        <NextAuthProvider>
+          <Toaster />
+          <ModalProvider />
+        </NextAuthProvider>
         {children}
       </body>
     </html>
