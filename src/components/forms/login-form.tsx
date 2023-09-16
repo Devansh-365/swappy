@@ -105,7 +105,12 @@ const AuthForm = ({ className, ...props }: AuthFormProps) => {
               )}
             />
           </div>
-          <Button className="w-full" type="submit">
+          <Button
+            className="w-full"
+            type="submit"
+            disabled={isLoading || isGoogleLoading}
+          >
+            {isLoading ? <Icons.spinner className="animate-spin mr-2" /> : null}
             Login
           </Button>
         </form>
