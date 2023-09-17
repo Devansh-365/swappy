@@ -1,8 +1,10 @@
 import { getCurrentUser } from "@/lib/session";
 import React from "react";
 import { redirect } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -20,9 +22,9 @@ export default async function DashboardPage() {
             Create and manage your job posts
           </p>
         </div>
-        <Button>
+        <Link href="/post/new" className={cn(buttonVariants({}))}>
           <Icons.add className="w-3 h-3 mr-2" /> New Post
-        </Button>
+        </Link>
       </div>
     </>
   );
