@@ -5,11 +5,12 @@ import React from "react";
 import Image from "next/image";
 import { UserAccountNav } from "./user-account-nav";
 import { getCurrentUser } from "@/lib/session";
+import db from "@/lib/db";
 
 export default async function Navbar() {
   const user = await getCurrentUser();
 
-  console.log("USER: ", user)
+  console.log("USER: ", user);
 
   return (
     <header className="fixed top-0 left-0 z-10 w-full backdrop-blur-[12px]">
@@ -48,7 +49,7 @@ export default async function Navbar() {
                   variant: "swappy",
                   className: "rounded-full mr-2 bg-[#F03D4E]",
                 })}
-                href="/login"
+                href="/dashboard"
               >
                 Post Job
               </Link>
