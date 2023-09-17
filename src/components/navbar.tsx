@@ -45,13 +45,13 @@ export default async function Navbar() {
             <React.Fragment>
               <Link
                 className={buttonVariants({
-                  size: "sm",
+                  size: "md",
                   variant: "swappy",
                   className: "rounded-full mr-2 bg-[#F03D4E]",
                 })}
                 href="/dashboard"
               >
-                Post Job
+                Post your Job
               </Link>
               <UserAccountNav
                 user={{
