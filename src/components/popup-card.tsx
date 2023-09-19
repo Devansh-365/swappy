@@ -7,8 +7,22 @@ import { Job, Skill } from "@prisma/client";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Icons } from "./icons";
+import {
+  BookOpen,
+  Briefcase,
+  Building2,
+  MapPin,
+  Tags,
+  User2,
+} from "lucide-react";
 
-export default function PopupCard({ role, skills }: { role: Job, skills: Skill[] }) {
+export default function PopupCard({
+  role,
+  skills,
+}: {
+  role: Job;
+  skills: Skill[];
+}) {
   return (
     <Drawer.Root>
       <DrawerTrigger asChild>
@@ -39,29 +53,47 @@ export default function PopupCard({ role, skills }: { role: Job, skills: Skill[]
             </Button>
           </div>
           <div className="mb-4">
-            <h5 className="font-semibold text-lg mb-2">Company Name</h5>
+            <h5 className="mb-2 flex items-center">
+              <Building2 className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-red-500" />{" "}
+              <span className="font-semibold text-lg">Company Name</span>
+            </h5>
             <p className="capitalize">{role.companyName}</p>
           </div>
           <div className="mb-4">
-            <h5 className="font-semibold text-lg mb-2">Employement Type</h5>
+            <h5 className="mb-2 flex items-center">
+              <User2 className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-orange-500" />{" "}
+              <span className="font-semibold text-lg">Employement Type</span>
+            </h5>
             <p className="capitalize">{role.employmentType}</p>
           </div>
           <div className="mb-4">
-            <h5 className="font-semibold text-lg mb-2">Work Mode</h5>
+            <h5 className="mb-2 flex items-center">
+              <Briefcase className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-purple-500" />{" "}
+              <span className="font-semibold text-lg">Work Mode</span>
+            </h5>
             <p className="capitalize">{role.location}</p>
           </div>
           <div className="mb-4">
-            <h5 className="font-semibold text-lg mb-2">Location</h5>
+            <h5 className="mb-2 flex items-center">
+              <MapPin className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-green-500" />{" "}
+              <span className="font-semibold text-lg">Location</span>
+            </h5>
             <p className="capitalize">
               {role.country}, {role.city}
             </p>
           </div>
           <div className="mb-4">
-            <h5 className="font-semibold text-lg mb-2">About the job</h5>
+            <h5 className="mb-2 flex items-center">
+              <BookOpen className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-blue-500" />{" "}
+              <span className="font-semibold text-lg">About the job</span>
+            </h5>
             <p>{role.description}</p>
           </div>
           <div>
-            <h5 className="font-semibold text-lg mb-2">Skills</h5>
+            <h5 className="mb-2 flex items-center">
+              <Tags className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-yellow-500" />{" "}
+              <span className="font-semibold text-lg">Skills</span>
+            </h5>
             <div className="flex gap-2">
               {skills.map((skill) => (
                 <Badge
