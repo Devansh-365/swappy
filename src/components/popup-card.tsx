@@ -5,7 +5,7 @@ import { Drawer } from "vaul";
 import { DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Job, Skill } from "@prisma/client";
 import { Badge } from "./ui/badge";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { Icons } from "./icons";
 import {
   BookOpen,
@@ -15,6 +15,7 @@ import {
   Tags,
   User2,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function PopupCard({
   role,
@@ -48,9 +49,9 @@ export default function PopupCard({
             <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
               {role.title}
             </h3>
-            <Button size="sm">
+            <Link className={buttonVariants({size: "sm"})} href="/">
               <Icons.link className="w-3 h-3 mr-2" /> Contact User
-            </Button>
+            </Link>
           </div>
           <div className="mb-4">
             <h5 className="mb-2 flex items-center">

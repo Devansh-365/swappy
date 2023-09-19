@@ -134,17 +134,20 @@ const JobFilter: React.FC<FilterProps> = ({ onFilter }) => {
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0">
             <Command>
-              <CommandInput placeholder="Search framework..." />
-              <CommandEmpty>No framework found.</CommandEmpty>
+              <CommandInput placeholder="Search work mode..." />
+              <CommandEmpty>No work mode found.</CommandEmpty>
               <CommandGroup className="overflow-y-scroll max-h-[200px]">
                 {employmentTypes.map((framework) => (
                   <CommandItem
                     key={framework.value}
                     onSelect={(currentValue) => {
                       handleChange("location", currentValue);
-                      setlocationValue(currentValue === value ? "" : currentValue);
+                      setlocationValue(
+                        currentValue === value ? "" : currentValue
+                      );
                       setLocationOpen(false);
                     }}
+                    className="capitalize"
                   >
                     <Check
                       className={cn(
