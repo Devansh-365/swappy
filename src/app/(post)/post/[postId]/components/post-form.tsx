@@ -103,7 +103,7 @@ export default function PostForm({ initialData }: any) {
     },
   });
 
-  const [tags, setTags] = React.useState<Tag[]>(initialData.skills || []);
+  const [tags, setTags] = React.useState<Tag[]>(initialData?.skills || []);
 
   const { getValues, setValue } = form;
 
