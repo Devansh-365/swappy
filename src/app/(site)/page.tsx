@@ -91,10 +91,14 @@ const users = [
 ];
 
 export default async function Home() {
-  const jobPosts = await db.job.findMany({})
+  const jobPosts = await db.job.findMany({
+    include: {
+      skills: true,
+    },
+  });
 
-  console.log("JOBPOST : ", jobPosts)
-  
+  console.log("JOBPOST : ", jobPosts);
+
   return (
     <>
       <section className="relative w-screen h-[660px] lg:h-[562px]">

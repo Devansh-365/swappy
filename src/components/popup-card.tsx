@@ -4,6 +4,9 @@ import React from "react";
 import { Drawer } from "vaul";
 import { DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Job } from "@prisma/client";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { Icons } from "./icons";
 
 export default function PopupCard({ role }: { role: Job }) {
   return (
@@ -25,8 +28,53 @@ export default function PopupCard({ role }: { role: Job }) {
           </span>
         </button>
       </DrawerTrigger>
-      <DrawerContent className="h-[85%] px-2 pt-10 pb-2">
-        <h3>{role.title}</h3>
+      <DrawerContent className="h-[85%] px-2 pt-10 pb-2 overflow-y-scroll">
+        <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100]">
+          <div className="flex items-start justify-between">
+            <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
+              {role.title}
+            </h3>
+            <Button size="sm">
+              <Icons.link className="w-3 h-3 mr-2" /> Contact User
+            </Button>
+          </div>
+          <div className="mb-4">
+            <h5 className="font-semibold text-lg mb-2">Company Name</h5>
+            <p className="capitalize">{role.companyName}</p>
+          </div>
+          <div className="mb-4">
+            <h5 className="font-semibold text-lg mb-2">Employement Type</h5>
+            <p className="capitalize">{role.employmentType}</p>
+          </div>
+          <div className="mb-4">
+            <h5 className="font-semibold text-lg mb-2">Work Mode</h5>
+            <p className="capitalize">{role.location}</p>
+          </div>
+          <div className="mb-4">
+            <h5 className="font-semibold text-lg mb-2">Location</h5>
+            <p className="capitalize">
+              {role.country}, {role.city}
+            </p>
+          </div>
+          <div className="mb-4">
+            <h5 className="font-semibold text-lg mb-2">About the job</h5>
+            <p>{role.description}</p>
+          </div>
+          <div>
+            <h5 className="font-semibold text-lg mb-2">Skills</h5>
+            <div className="flex gap-2">
+              {role.skills.map((skill) => (
+                <Badge
+                  variant="secondary"
+                  key={skill.id}
+                  className="px-2 py-1 capitalize"
+                >
+                  {skill.text}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
       </DrawerContent>
     </Drawer.Root>
   );
