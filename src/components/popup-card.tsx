@@ -3,12 +3,12 @@
 import React from "react";
 import { Drawer } from "vaul";
 import { DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import { Job } from "@prisma/client";
+import { Job, Skill } from "@prisma/client";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Icons } from "./icons";
 
-export default function PopupCard({ role }: { role: Job }) {
+export default function PopupCard({ role, skills }: { role: Job, skills: Skill[] }) {
   return (
     <Drawer.Root>
       <DrawerTrigger asChild>
@@ -63,7 +63,7 @@ export default function PopupCard({ role }: { role: Job }) {
           <div>
             <h5 className="font-semibold text-lg mb-2">Skills</h5>
             <div className="flex gap-2">
-              {role.skills.map((skill) => (
+              {skills.map((skill) => (
                 <Badge
                   variant="secondary"
                   key={skill.id}

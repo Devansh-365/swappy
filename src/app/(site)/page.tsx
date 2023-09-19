@@ -150,7 +150,7 @@ export default async function Home() {
         </div>
         <div className="pt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
           {jobPosts.map((role, i) => (
-            <PopupCard role={role} key={i} />
+            <PopupCard role={role} skills={role.skills} key={i} />
           ))}
         </div>
       </section>
