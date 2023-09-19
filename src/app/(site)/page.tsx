@@ -4,6 +4,7 @@ import { DatePickerDemo } from "@/components/ui/date-picker";
 import { LocationPicker } from "@/components/ui/location-picker";
 import { PricePicker } from "@/components/ui/price-picker";
 import { UserAvatar } from "@/components/user-avatar";
+import db from "@/lib/db";
 import { Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -89,7 +90,11 @@ const users = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const jobPosts = await db.job.findMany({})
+
+  console.log("JOBPOST : ", jobPosts)
+  
   return (
     <>
       <section className="relative w-screen h-[660px] lg:h-[562px]">
@@ -140,7 +145,7 @@ export default function Home() {
           <Button variant="swappy">Explore Now</Button>
         </div>
         <div className="pt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
-          {roles.map((role, i) => (
+          {jobPosts.map((role, i) => (
             <PopupCard role={role} key={i} />
           ))}
         </div>

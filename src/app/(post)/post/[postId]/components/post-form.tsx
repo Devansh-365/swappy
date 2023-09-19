@@ -41,6 +41,7 @@ import { City, Country } from "country-state-city";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
+import { Job } from "@prisma/client";
 
 const locations = [
   { label: "Remote work", value: "remote" },
@@ -86,6 +87,7 @@ const formSchema = z.object({
 });
 
 export default function PostForm({ initialData }: any) {
+  console.log("INTial: ", initialData)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -101,7 +103,7 @@ export default function PostForm({ initialData }: any) {
     },
   });
 
-  const [tags, setTags] = React.useState<Tag[]>([]);
+  const [tags, setTags] = React.useState<Tag[]>(initialData.skills || []);
 
   const { getValues, setValue } = form;
 

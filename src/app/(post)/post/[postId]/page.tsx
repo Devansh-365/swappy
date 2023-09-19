@@ -21,6 +21,9 @@ export default async function PostPage({
     where: {
       id: params.postId,
     },
+    include: {
+      skills: true,
+    },
   });
 
   return (
