@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -17,7 +19,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputType = type === "password" && showPassword ? "text" : type;
 
     return (
-      <div className="relative">
+      <div className="relative w-full">
         <input
           type={inputType}
           className={cn(

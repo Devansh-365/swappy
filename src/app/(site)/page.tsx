@@ -1,8 +1,4 @@
-import PopupCard from "@/components/popup-card";
-import { Button } from "@/components/ui/button";
-import { DatePickerDemo } from "@/components/ui/date-picker";
-import { LocationPicker } from "@/components/ui/location-picker";
-import { PricePicker } from "@/components/ui/price-picker";
+import JobList from "@/components/job-list";
 import { UserAvatar } from "@/components/user-avatar";
 import db from "@/lib/db";
 import { Globe } from "lucide-react";
@@ -97,8 +93,6 @@ export default async function Home() {
     },
   });
 
-  console.log("JOBPOST : ", jobPosts);
-
   return (
     <>
       <section className="relative w-screen h-[660px] lg:h-[562px]">
@@ -142,17 +136,7 @@ export default async function Home() {
             </button>
           ))}
         </div>
-        <div className="mt-8 w-fit bg-[#EAF2F6] flex justify-center items-center p-3 mx-auto rounded-full gap-2 lg:gap-6">
-          <LocationPicker />
-          <DatePickerDemo />
-          <PricePicker />
-          <Button variant="swappy">Explore Now</Button>
-        </div>
-        <div className="pt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
-          {jobPosts.map((role, i) => (
-            <PopupCard role={role} skills={role.skills} key={i} />
-          ))}
-        </div>
+        <JobList jobs={jobPosts} />
       </section>
     </>
   );
