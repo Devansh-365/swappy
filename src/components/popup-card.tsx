@@ -42,7 +42,7 @@ export default function PopupCard({
           </span>
         </button>
       </DrawerTrigger>
-      <DrawerContent className="h-[85%] px-2 pt-10 pb-2 overflow-y-scroll">
+      <DrawerContent className="h-[85%] px-2 pt-10 pb-2 overflow-y-scroll scrolling-smooth">
         <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100]">
           <div className="flex items-start justify-between">
             <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
