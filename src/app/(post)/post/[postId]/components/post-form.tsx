@@ -88,7 +88,7 @@ const formSchema = z.object({
 export default function PostForm({ initialData }: any) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: initialData || {
       title: "",
       description: "",
       companyName: "",

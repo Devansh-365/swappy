@@ -55,7 +55,7 @@ model User {
 }
 
 model Job {
-  id            Int      @id @default(autoincrement())
+  id            String    @id @default(uuid())
   userId        String
   title         String
   description   String
@@ -71,9 +71,9 @@ model Job {
 }
 
 model Skill {
-  id    Int     @id @default(autoincrement())
+  id    String    @id @default(uuid())
   text  String
-  jobId Int 
+  jobId String 
   job   Job     @relation(fields: [jobId], references: [id])
 
   @@index([jobId])

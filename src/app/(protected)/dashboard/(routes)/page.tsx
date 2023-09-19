@@ -5,6 +5,8 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import db from "@/lib/db";
+import { UserJobPostItem } from "@/components/user-job-post";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -12,6 +14,12 @@ export default async function DashboardPage() {
   if (!user) {
     redirect("/login");
   }
+
+  const jobs = await db.job.findMany({
+    where: {
+      userId: user.id,
+    },
+  });
 
   return (
     <>
@@ -25,6 +33,13 @@ export default async function DashboardPage() {
         <Link href="/post/new" className={cn(buttonVariants({}))}>
           <Icons.add className="w-3 h-3 mr-2" /> New Post
         </Link>
+      </div>
+      <div className="mt-8">
+        {jobs.map((job) => (
+          <div key={job.id} className="divide-y divide-border rounded-md border">
+            <UserJobPostItem post={job} />
+          </div>
+        ))}
       </div>
     </>
   );
