@@ -16,6 +16,7 @@ import {
   User2,
 } from "lucide-react";
 import Link from "next/link";
+import { hasSubscription } from "@/lib/subscription";
 
 export default function PopupCard({
   role,
@@ -44,12 +45,12 @@ export default function PopupCard({
         </button>
       </DrawerTrigger>
       <DrawerContent className="h-[85%] px-2 pt-10 pb-2 overflow-y-scroll scrolling-smooth">
-        <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100]">
+        <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100] overflow-y-scroll">
           <div className="flex items-start justify-between">
             <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
               {role.title}
             </h3>
-            <Link className={buttonVariants({size: "sm"})} href="/">
+            <Link className={buttonVariants({ size: "sm" })} href="/">
               <Icons.link className="w-3 h-3 mr-2" /> Contact User
             </Link>
           </div>
@@ -86,7 +87,7 @@ export default function PopupCard({
           <div className="mb-4">
             <h5 className="mb-2 flex items-center">
               <BookOpen className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-blue-500" />{" "}
-              <span className="font-semibold text-lg">About the job</span>
+              <span className="font-semibold text-lg">My post</span>
             </h5>
             <p>{role.description}</p>
           </div>
