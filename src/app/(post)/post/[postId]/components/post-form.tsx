@@ -87,7 +87,7 @@ const formSchema = z.object({
 });
 
 export default function PostForm({ initialData }: any) {
-  console.log("INTial: ", initialData)
+  console.log("INTial: ", initialData);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
@@ -119,7 +119,7 @@ export default function PostForm({ initialData }: any) {
 
       form.reset();
       toast.success(toastMessage);
-      redirect("/dashboard");
+      router.push("/dashboard");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong.");

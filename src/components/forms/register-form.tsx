@@ -60,9 +60,7 @@ const RegisterForm = ({ className, ...props }: AuthFormProps) => {
         password: values.password,
       });
 
-      router.refresh();
       router.push(`/`);
-
       toast.success("User has been registered!");
     } catch (error) {
       console.log(error);

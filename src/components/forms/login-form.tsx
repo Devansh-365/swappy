@@ -62,7 +62,6 @@ const AuthForm = ({ className, ...props }: AuthFormProps) => {
         callbackUrl,
       });
 
-      router.refresh();
       router.push(`/`);
 
       toast.success("User logged in!");
