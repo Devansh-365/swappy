@@ -99,9 +99,7 @@ export default async function Home() {
   });
 
   const customer = await createCustomerIfNull();
-  const hasSub = await hasSubscription();
-  const checkoutLink = await createCheckoutLink(String(customer));
-
+  
   return (
     <>
       <section className="relative w-screen h-[660px] lg:h-[562px]">
