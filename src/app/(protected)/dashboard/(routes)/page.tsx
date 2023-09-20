@@ -7,6 +7,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import db from "@/lib/db";
 import { UserJobPostItem } from "@/components/user-job-post";
+import { hasSubscription } from "@/lib/subscription";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -21,6 +22,8 @@ export default async function DashboardPage() {
     },
   });
 
+  const hasSub = await hasSubscription();
+
   return (
     <>
       <div className="flex items-center justify-between px-2">
@@ -30,13 +33,20 @@ export default async function DashboardPage() {
             Create and manage your job posts
           </p>
         </div>
-        <Link href="/post/new" className={cn(buttonVariants({}))}>
-          <Icons.add className="w-3 h-3 mr-2" /> New Post
-        </Link>
+        {user.email == "admin2@swappy.com" || hasSub ? (
+          <Link href="/post/new" className={cn(buttonVariants({}))}>
+            <Icons.add className="w-3 h-3 mr-2" /> New Post
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="mt-8">
         {jobs.map((job) => (
-          <div key={job.id} className="divide-y divide-border rounded-md border">
+          <div
+            key={job.id}
+            className="divide-y divide-border rounded-md border"
+          >
             <UserJobPostItem post={job} />
           </div>
         ))}

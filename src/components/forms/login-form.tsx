@@ -127,9 +127,11 @@ const AuthForm = ({ className, ...props }: AuthFormProps) => {
       </div>
       <Button
         type="button"
-        onClick={() => {
+        onClick={async () => {
           setIsGoogleLoading(true);
-          signIn("github");
+          await signIn("google", {
+            callbackUrl: "/",
+          });
         }}
         disabled={isLoading || isGoogleLoading}
       >

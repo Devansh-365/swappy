@@ -1,6 +1,11 @@
 import JobList from "@/components/job-list";
 import { UserAvatar } from "@/components/user-avatar";
 import db from "@/lib/db";
+import {
+  createCheckoutLink,
+  createCustomerIfNull,
+  hasSubscription,
+} from "@/lib/subscription";
 import { Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -92,6 +97,10 @@ export default async function Home() {
       skills: true,
     },
   });
+
+  const customer = await createCustomerIfNull();
+  const hasSub = await hasSubscription();
+  const checkoutLink = await createCheckoutLink(String(customer));
 
   return (
     <>
