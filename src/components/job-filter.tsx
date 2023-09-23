@@ -53,16 +53,22 @@ const JobFilter: React.FC<FilterProps> = ({ onFilter }) => {
     country: value,
   });
 
+  const [tempFilters, setTempFilters] = useState(filters);
+
   const handleChange = (
     name: keyof Filters,
     value: string | undefined | null
   ) => {
-    setFilters((prevFilters) => {
+    setTempFilters((prevFilters) => {
       const updatedFilters = { ...prevFilters, [name]: value || "" };
-      setFilters(updatedFilters);
-      onFilter(updatedFilters); // You can call onFilter directly with the updated filters
       return updatedFilters; // Return the updated filters
     });
+  };
+
+  // New function to apply filters
+  const applyFilters = () => {
+    setFilters(tempFilters);
+    onFilter(tempFilters);
   };
 
   return (
@@ -71,7 +77,7 @@ const JobFilter: React.FC<FilterProps> = ({ onFilter }) => {
         className="bg-white w-full md:min-w-[326px] rounded-full col-span-2 md:col-span-1"
         name="title"
         placeholder="Search job title"
-        value={filters.title}
+        value={tempFilters.title}
         onChange={(e) => handleChange("title", e.target.value)}
       />
       <div className="flex flex-col md:flex-row gap-2 lg:gap-4 w-full">
@@ -162,14 +168,10 @@ const JobFilter: React.FC<FilterProps> = ({ onFilter }) => {
             </Command>
           </PopoverContent>
         </Popover>
+        <Button variant="swappy" onClick={applyFilters}>
+          Search
+        </Button>
       </div>
-      {/* <input
-        type="text"
-        name="country"
-        value={filters.country}
-        onChange={handleChange}
-        placeholder="Filter by country"
-      /> */}
     </div>
   );
 };
