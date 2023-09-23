@@ -6,6 +6,7 @@ import {
   Briefcase,
   Building2,
   MapPin,
+  MessageCircle,
   Tags,
   User2,
 } from "lucide-react";
@@ -96,7 +97,7 @@ export default function PopupCard({
                   </h5>
                   <p>{role.description}</p>
                 </div>
-                <div>
+                <div className="mb-4">
                   <h5 className="mb-2 flex items-center">
                     <Tags className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-yellow-500" />{" "}
                     <span className="font-semibold text-lg">Skills</span>
@@ -113,6 +114,17 @@ export default function PopupCard({
                     ))}
                   </div>
                 </div>
+                {role.opinion && (
+                  <div className="mb-4">
+                    <h5 className="mb-2 flex items-center">
+                      <MessageCircle className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-red-500" />{" "}
+                      <span className="font-semibold text-lg">
+                        Some advantages and disadvantages of the job
+                      </span>
+                    </h5>
+                    <p>{role.description}</p>
+                  </div>
+                )}
               </div>
             </>
           ) : (

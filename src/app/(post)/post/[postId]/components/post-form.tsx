@@ -62,9 +62,7 @@ const formSchema = z.object({
   description: z.string().min(10, {
     message: "Job description must be at least 10 characters.",
   }),
-  companyName: z.string().min(2, {
-    message: "Comapany Name be at least 2 characters.",
-  }),
+  companyName: z.string().optional(),
   skills: z.array(
     z.object({
       id: z.string(),
@@ -194,7 +192,7 @@ export default function PostForm({ initialData }: any) {
               </FormItem>
             )}
           />
-          <FormField
+          {/* <FormField
             control={form.control}
             name="companyName"
             render={({ field }) => (
@@ -207,7 +205,7 @@ export default function PostForm({ initialData }: any) {
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
           <FormField
             control={form.control}
             name="skills"
@@ -498,7 +496,7 @@ export default function PostForm({ initialData }: any) {
                   />
                 </FormControl>
                 <FormDescription>
-                  Share your opinion about this job (optional).
+                  Share some advantages and disadvantages of the job (optional).
                 </FormDescription>
                 <FormMessage />
               </FormItem>

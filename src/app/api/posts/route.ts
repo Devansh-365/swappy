@@ -6,7 +6,7 @@ import * as z from "zod";
 const postSchema = z.object({
   title: z.string().min(2),
   description: z.string().min(10),
-  companyName: z.string().min(2),
+  companyName: z.string().optional(),
   skills: z.array(
     z.object({
       id: z.string(),
