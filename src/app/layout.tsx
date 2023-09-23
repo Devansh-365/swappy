@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "swapIswap",
+  title: "Swappy",
   description: `The platform for IT talents, whether you're a freelancer or an employee!`,
 };
 
