@@ -1,6 +1,7 @@
 import JobList from "@/components/job-list";
 import { UserAvatar } from "@/components/user-avatar";
 import db from "@/lib/db";
+import { getCurrentUser } from "@/lib/session";
 import {
   createCheckoutLink,
   createCustomerIfNull,
@@ -99,7 +100,9 @@ export default async function Home() {
   });
 
   const customer = await createCustomerIfNull();
-  
+  const hasSub = await hasSubscription();
+  const user = await getCurrentUser();
+
   return (
     <>
       <section className="relative w-screen h-[660px] lg:h-[562px]">
@@ -143,7 +146,7 @@ export default async function Home() {
             </button>
           ))}
         </div>
-        <JobList jobs={jobPosts} />
+        <JobList jobs={jobPosts} hasSub={hasSub} user={user ? user : null} />
       </section>
     </>
   );

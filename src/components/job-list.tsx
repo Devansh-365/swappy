@@ -2,15 +2,17 @@
 
 import { useState } from "react";
 import JobFilter from "@/components/job-filter"; // Import your JobFilter component
-import { Job, Skill } from "@prisma/client";
+import { Job, Skill, User } from "@prisma/client";
 import PopupCard from "./popup-card";
 
 interface Props {
   jobs: any;
   skills?: Skill[];
+  hasSub: Boolean;
+  user: any;
 }
 
-const JobList: React.FC<Props> = ({ jobs }) => {
+const JobList: React.FC<Props> = ({ jobs, hasSub, user }) => {
   const [filteredJobs, setFilteredJobs] = useState(jobs);
 
   const handleFilter = (filters: {
@@ -43,7 +45,7 @@ const JobList: React.FC<Props> = ({ jobs }) => {
       {filteredJobs.length != 0 ? (
         <div className="pt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4 lg:gap-8">
           {filteredJobs.map((job: any, i: any) => (
-            <PopupCard role={job} skills={job.skills} key={i} />
+            <PopupCard role={job} skills={job.skills} key={i} hasSub={hasSub} user={user} />
           ))}
         </div>
       ) : (

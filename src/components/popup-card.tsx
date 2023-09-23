@@ -1,5 +1,5 @@
 import React from "react";
-import { Job, Skill } from "@prisma/client";
+import { Job, Skill, User } from "@prisma/client";
 import { Badge } from "./ui/badge";
 import {
   BookOpen,
@@ -9,17 +9,31 @@ import {
   Tags,
   User2,
 } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Link from "next/link";
 import ContactUserBtn from "./contact-user-btn";
 import DrawerClient from "./drawer-client";
+import { buttonVariants } from "./ui/button";
 
 export default function PopupCard({
   role,
   skills,
+  hasSub,
+  user,
 }: {
   role: Job;
   skills: Skill[];
+  hasSub: any;
+  user: any;
 }) {
+  console.log("HAS SUB", hasSub);
   return (
     <DrawerClient
       lowChildren={
@@ -40,68 +54,87 @@ export default function PopupCard({
         </button>
       }
       upChildren={
-        <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100] overflow-y-scroll">
-          <div className="flex items-start justify-between">
-            <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
-              {role.title}
-            </h3>
-            <ContactUserBtn userId={role.userId} />
-          </div>
-          <div className="mb-4">
-            <h5 className="mb-2 flex items-center">
-              <Building2 className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-red-500" />{" "}
-              <span className="font-semibold text-lg">Company Name</span>
-            </h5>
-            <p className="capitalize">{role.companyName}</p>
-          </div>
-          <div className="mb-4">
-            <h5 className="mb-2 flex items-center">
-              <User2 className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-orange-500" />{" "}
-              <span className="font-semibold text-lg">Employement Type</span>
-            </h5>
-            <p className="capitalize">{role.employmentType}</p>
-          </div>
-          <div className="mb-4">
-            <h5 className="mb-2 flex items-center">
-              <Briefcase className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-purple-500" />{" "}
-              <span className="font-semibold text-lg">Work Mode</span>
-            </h5>
-            <p className="capitalize">{role.location}</p>
-          </div>
-          <div className="mb-4">
-            <h5 className="mb-2 flex items-center">
-              <MapPin className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-green-500" />{" "}
-              <span className="font-semibold text-lg">Location</span>
-            </h5>
-            <p className="capitalize">
-              {role.country}, {role.city}
-            </p>
-          </div>
-          <div className="mb-4">
-            <h5 className="mb-2 flex items-center">
-              <BookOpen className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-blue-500" />{" "}
-              <span className="font-semibold text-lg">My post</span>
-            </h5>
-            <p>{role.description}</p>
-          </div>
-          <div>
-            <h5 className="mb-2 flex items-center">
-              <Tags className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-yellow-500" />{" "}
-              <span className="font-semibold text-lg">Skills</span>
-            </h5>
-            <div className="flex gap-2">
-              {skills.map((skill) => (
-                <Badge
-                  variant="secondary"
-                  key={skill.id}
-                  className="px-2 py-1 capitalize"
-                >
-                  {skill.text}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
+        <>
+          {hasSub || user.email == "admin2@swappy.com" ? (
+            <>
+              <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100] overflow-y-scroll">
+                <div className="flex items-start justify-between">
+                  <h3 className="mt-2 mb-6 inline-block font-bold text-2xl leading-tight lg:text-4xl">
+                    {role.title}
+                  </h3>
+                  <ContactUserBtn userId={role.userId} />
+                </div>
+                <div className="mb-4">
+                  <h5 className="mb-2 flex items-center">
+                    <User2 className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-orange-500" />{" "}
+                    <span className="font-semibold text-lg">
+                      Employement Type{hasSub}
+                    </span>
+                  </h5>
+                  <p className="capitalize">{role.employmentType}</p>
+                </div>
+                <div className="mb-4">
+                  <h5 className="mb-2 flex items-center">
+                    <Briefcase className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-purple-500" />{" "}
+                    <span className="font-semibold text-lg">Work Mode</span>
+                  </h5>
+                  <p className="capitalize">{role.location}</p>
+                </div>
+                <div className="mb-4">
+                  <h5 className="mb-2 flex items-center">
+                    <MapPin className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-green-500" />{" "}
+                    <span className="font-semibold text-lg">Location</span>
+                  </h5>
+                  <p className="capitalize">
+                    {role.country}, {role.city}
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h5 className="mb-2 flex items-center">
+                    <BookOpen className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-blue-500" />{" "}
+                    <span className="font-semibold text-lg">My post</span>
+                  </h5>
+                  <p>{role.description}</p>
+                </div>
+                <div>
+                  <h5 className="mb-2 flex items-center">
+                    <Tags className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-yellow-500" />{" "}
+                    <span className="font-semibold text-lg">Skills</span>
+                  </h5>
+                  <div className="flex gap-2">
+                    {skills.map((skill) => (
+                      <Badge
+                        variant="secondary"
+                        key={skill.id}
+                        className="px-2 py-1 capitalize"
+                      >
+                        {skill.text}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <Card className="mt-8 max-w-xl mx-auto">
+              <CardHeader>
+                <CardTitle>Wanted to view job post</CardTitle>
+                <CardDescription>
+                  Get access to exclusive benefits
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                Join the community of job swappers. Create your job posting and
+                start networking with professionals seeking new opportunities.
+              </CardContent>
+              <CardFooter className="flex flex-col items-start space-y-2 md:flex-row md:justify-between md:space-x-0">
+                <Link href="/dashboard/billing" className={buttonVariants({})}>
+                  Go to Billing
+                </Link>
+              </CardFooter>
+            </Card>
+          )}
+        </>
       }
     />
     // <Drawer.Root>
