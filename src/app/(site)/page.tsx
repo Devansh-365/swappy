@@ -121,7 +121,7 @@ export default async function Home() {
             Would you consider changing your job? Find someone to swap with you!
           </h1>
           <p className="mx-auto mb-12 max-w-2xl font-semibold leading-6 text-md md:text-xl text-gray-200 dark:text-gray-200">
-            {`Welcome to Swappy, the platform for IT talents, whether you're a freelancer or an employee!`}{" "}
+            {`Welcome to swapIswap, the platform for IT talents, whether you're a freelancer or an employee!`}{" "}
           </p>
           <div className="mx-auto text-center group w-full flex justify-center items-center">
             {users.map((user, i) => (
