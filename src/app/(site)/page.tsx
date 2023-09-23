@@ -72,23 +72,23 @@ const roles = [
 const users = [
   {
     name: "John Doe",
-    image: "https://randomuser.me/api/portraits/lego/3.jpg",
+    image: "/avatar1.png",
   },
   {
     name: "Jane Smith",
-    image: "https://randomuser.me/api/portraits/lego/2.jpg",
+    image: "/avatar2.png",
   },
   {
     name: "Bob Johnson",
-    image: "https://randomuser.me/api/portraits/lego/7.jpg",
+    image: "/avatar3.png",
   },
   {
     name: "Alice Williams",
-    image: "https://randomuser.me/api/portraits/lego/4.jpg",
+    image: "/avatar4.png",
   },
   {
     name: "Charlie Brown",
-    image: "https://randomuser.me/api/portraits/lego/0.jpg",
+    image: "/avatar5.png",
   },
 ];
 
@@ -128,7 +128,7 @@ export default async function Home() {
               <UserAvatar
                 key={i}
                 user={user}
-                className="-ml-3 relative hover:ml-1 ease-in-out transition-all delay-100"
+                className="-ml-3 relative"
               />
             ))}
           </div>
