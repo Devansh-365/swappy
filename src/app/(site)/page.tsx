@@ -135,7 +135,7 @@ export default async function Home() {
         </div>
       </section>
       <section className="mx-auto max-w-[120rem] px-8 -mt-12 lg:-mt-4">
-        <div className="w-full flex flex-wrap justify-center max-w-6xl lg:justify-between items-center gap-2 mx-auto">
+        {/* <div className="w-full flex flex-wrap justify-center max-w-6xl lg:justify-between items-center gap-2 mx-auto">
           {countries.map((c, i) => (
             <button
               className="border border-dotted flex text-sm items-center py-1 md:py-2 px-3 lg:px-5 capitalize rounded-full border-gray-400 hover:bg-gray-100 ease-in-out transition-all"
@@ -145,7 +145,7 @@ export default async function Home() {
               {c}
             </button>
           ))}
-        </div>
+        </div> */}
         <JobList jobs={jobPosts} hasSub={hasSub} user={user ? user : null} />
       </section>
     </>
