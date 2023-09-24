@@ -155,7 +155,7 @@ export default function PopupCard({
                         Some advantages and disadvantages of the job
                       </span>
                     </h5>
-                    <p>{role.description}</p>
+                    <p>{role.opinion}</p>
                   </div>
                 )}
               </div>
