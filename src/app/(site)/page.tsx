@@ -7,9 +7,7 @@ import {
   createCustomerIfNull,
   hasSubscription,
 } from "@/lib/subscription";
-import { Globe } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 const countries = [
   "asia",
