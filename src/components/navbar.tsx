@@ -43,7 +43,7 @@ export default async function Navbar() {
             </React.Fragment>
           ) : (
             <React.Fragment>
-              <Link
+              {/* <Link
                 className={buttonVariants({
                   size: "md",
                   variant: "swappy",
@@ -52,7 +52,7 @@ export default async function Navbar() {
                 href="/dashboard"
               >
                 Post your Job
-              </Link>
+              </Link> */}
               <UserAccountNav
                 user={{
                   name: user?.name,
