@@ -7,7 +7,6 @@ import axios from "axios";
 import Link from "next/link";
 
 export default function ContactUserBtn({ userId }: { userId: string }) {
-  console.log("USER ID", userId);
   const [email, setEmail] = useState("");
 
   useEffect(() => {
@@ -16,7 +15,6 @@ export default function ContactUserBtn({ userId }: { userId: string }) {
         const response = await axios.post(`/api/user`, {
           userId: userId,
         });
-        console.log("RESPONSE", response);
         setEmail(response.data.email);
       } catch (error) {
         console.error("Error fetching user email:", error);
@@ -26,8 +24,6 @@ export default function ContactUserBtn({ userId }: { userId: string }) {
     fetchUserEmail();
   }, [userId]);
 
-  console.log("EMAIL", email);
-
   return (
     <Link
       className={buttonVariants({
@@ -35,7 +31,7 @@ export default function ContactUserBtn({ userId }: { userId: string }) {
         className: "cursor-hover",
       })}
       target="_blank"
-      href={`mailto:${email}`}
+      href={`mailto:${email ? email : ""}`}
     >
       <Icons.link className="w-3 h-3 mr-2" /> Contact User
     </Link>
