@@ -125,11 +125,7 @@ export default async function Home() {
           </p>
           <div className="mx-auto text-center group w-full flex justify-center items-center">
             {users.map((user, i) => (
-              <UserAvatar
-                key={i}
-                user={user}
-                className="-ml-3 relative"
-              />
+              <UserAvatar key={i} user={user} className="-ml-3 relative" />
             ))}
           </div>
         </div>
@@ -146,7 +142,11 @@ export default async function Home() {
             </button>
           ))}
         </div> */}
-        <JobList jobs={jobPosts} hasSub={hasSub} user={user ? user : null} />
+        <JobList
+          jobs={jobPosts}
+          hasSub={hasSub ? hasSub : false}
+          user={user ? user : null}
+        />
       </section>
     </>
   );
