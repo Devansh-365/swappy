@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Job, Skill, User } from "@prisma/client";
 import { Badge } from "./ui/badge";
 import {
@@ -22,6 +22,19 @@ import Link from "next/link";
 import ContactUserBtn from "./contact-user-btn";
 import DrawerClient from "./drawer-client";
 import { buttonVariants } from "./ui/button";
+import axios from "axios";
+
+interface UnsplashPhoto {
+  urls: {
+    small: string;
+    medium: string;
+    large: string;
+  };
+}
+
+interface UnsplashResponse {
+  results: UnsplashPhoto[];
+}
 
 export default function PopupCard({
   role,
@@ -34,22 +47,42 @@ export default function PopupCard({
   hasSub: any;
   user: any;
 }) {
-  console.log("HAS SUB", hasSub);
+  const [imageUrl, setImageUrl] = useState<string>("");
+
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.teleport.org/api/urban_areas/slug:${role.city.toLowerCase()}/images/`
+        );
+        setImageUrl(response.data.photos[0].image.mobile);
+      } catch (error) {
+        console.error("Error fetching user email:", error);
+      }
+    };
+
+    fetchUserEmail();
+  }, [role]);
+
   return (
     <DrawerClient
       lowChildren={
         <button className="group relative flex w-full transform-gpu flex-col rounded-3xl border-2 border-gray-200 bg-transparent transition-transform hover:-translate-y-0.5">
           <span
-            className="relative overflow-hidden rounded-3xl aspect-[240/135] text-center z-10 flex justify-center items-center w-full flex-1 shrink-0 gap-0.5 bg-cover bg-bottom bg-no-repeat p-4 bg-blend-overlay [background-image:var(--post-image)] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:select-none before:rounded-b-[calc(1.5rem-1px)] before:rounded-t-[calc(1.5rem-1px)] before:bg-[--post-image-bg] before:opacity-70 before:transition-opacity after:pointer-events-none after:absolute after:inset-0 after:z-10 after:select-none after:rounded-b-[calc(1.5rem-1px)] after:bg-gradient-to-b after:from-transparent after:to-[--post-image-bg] after:backdrop-blur after:transition-opacity group-hover:underline group-hover:before:opacity-30 md:p-5"
+            className="relative overflow-hidden rounded-3xl aspect-[240/135] text-center z-10 flex justify-center items-center w-full flex-1 shrink-0 gap-0.5 bg-cover bg-bottom bg-no-repeat p-4 bg-blend-overlay [background-image:var(--post-image)] before:pointer-events-none before:absolute before:inset-0 before:z-10 before:select-none before:rounded-b-[calc(1.5rem-1px)] before:rounded-t-[calc(1.5rem-1px)] before:bg-[--post-image-bg] before:opacity-40 before:transition-opacity after:pointer-events-none after:absolute after:inset-0 after:z-10 after:select-none after:rounded-b-[calc(1.5rem-1px)] after:bg-gradient-to-b after:from-transparent after:to-[--post-image-bg] after:backdrop-blur-[1.5px] after:transition-opacity group-hover:underline text-white group-hover:before:opacity-60 md:p-5"
             style={
               {
-                "--post-image":
-                  "url(https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?w=2000)",
+                "--post-image": `url(${
+                  imageUrl == ""
+                    ? "https://img.freepik.com/free-vector/dark-gradient-background-with-copy-space_53876-99548.jpg?w=1060&t=st=1695535643~exp=1695536243~hmac=32d5d391fd10975a0b383e2164fd17326ef7f4db5ada67d309d5a6b86a1e5855"
+                    : imageUrl
+                })`,
               } as React.CSSProperties
             }
           >
-            <h2 className="z-20 text-lg font-bold tracking-tight opacity-70 transition-opacity group-hover:opacity-100 md:text-lg">
-              {role.title} • {role.city} • Remote
+            <h2 className="z-20 text-white text-lg tracking-tight font-extrabold opacity-100 transition-opacity group-hover:opacity-110">
+              <span className="capitalize">{role.title}</span> • {role.city} •{" "}
+              <span className="capitalize">{role.location}</span>
             </h2>
           </span>
         </button>
