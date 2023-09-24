@@ -5,6 +5,7 @@ import {
   BookOpen,
   Briefcase,
   Building2,
+  Mail,
   MapPin,
   MessageCircle,
   Smartphone,
@@ -157,6 +158,17 @@ export default function PopupCard({
                       </span>
                     </h5>
                     <p>{role.opinion}</p>
+                  </div>
+                )}
+                {role.email && (
+                  <div className="mb-4">
+                    <h5 className="mb-2 flex items-center">
+                      <Mail className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-gray-500" />{" "}
+                      <span className="font-semibold text-lg">
+                        Contact via Email
+                      </span>
+                    </h5>
+                    <p>{role.email}</p>
                   </div>
                 )}
                 {role.phoneNum && (

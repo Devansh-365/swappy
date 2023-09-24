@@ -83,6 +83,7 @@ const formSchema = z.object({
   }),
   opinion: z.string().optional(),
   phoneNum: z.string().optional(),
+  email: z.string().optional(),
 });
 
 export default function PostForm({ initialData }: any) {
@@ -100,6 +101,7 @@ export default function PostForm({ initialData }: any) {
       employmentType: "",
       opinion: "",
       phoneNum: "",
+      email: "",
     },
   });
 
@@ -480,6 +482,20 @@ export default function PostForm({ initialData }: any) {
                   </PopoverContent>
                 </Popover>
                 <FormDescription>Select your employment type.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="Email" {...field} />
+                </FormControl>
+                <FormDescription>Enter your email(optional).</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
