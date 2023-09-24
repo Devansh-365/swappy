@@ -100,7 +100,7 @@ export default async function Home() {
   });
 
   const customer = await createCustomerIfNull();
-  const hasSub = await hasSubscription();
+  const hasSub = false;
   const user = await getCurrentUser();
 
   return (
