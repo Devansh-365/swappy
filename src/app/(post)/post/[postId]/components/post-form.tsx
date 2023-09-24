@@ -42,6 +42,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
 import { Job } from "@prisma/client";
+import validator from "validator";
 
 const locations = [
   { label: "Remote work", value: "remote" },
@@ -82,6 +83,7 @@ const formSchema = z.object({
     required_error: "Please select a employment type.",
   }),
   opinion: z.string().optional(),
+  phoneNum: z.string().optional(),
 });
 
 export default function PostForm({ initialData }: any) {
@@ -98,6 +100,7 @@ export default function PostForm({ initialData }: any) {
       city: "",
       employmentType: "",
       opinion: "",
+      phoneNum: "",
     },
   });
 
@@ -478,6 +481,22 @@ export default function PostForm({ initialData }: any) {
                   </PopoverContent>
                 </Popover>
                 <FormDescription>Select your employment type.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phoneNum"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Phone Number</FormLabel>
+                <FormControl>
+                  <Input type="tel" placeholder="Phone Number" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Enter your phone number(optional).
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}

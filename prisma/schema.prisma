@@ -64,6 +64,7 @@ model Job {
   country       String
   city          String
   employmentType String
+  phoneNum      String?
   opinion       String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

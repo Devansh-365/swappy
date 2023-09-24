@@ -18,6 +18,7 @@ const postSchema = z.object({
   city: z.string(),
   employmentType: z.string(),
   opinion: z.string().optional(),
+  phoneNum: z.string().optional(),
 });
 
 export async function DELETE(
@@ -78,6 +79,7 @@ export async function PATCH(
         city: data.city,
         employmentType: data.employmentType,
         opinion: data.opinion,
+        phoneNum: data.phoneNum,
       },
     });
 
