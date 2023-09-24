@@ -33,7 +33,7 @@ export default async function DashboardPage() {
             Create and manage your job posts
           </p>
         </div>
-        {user.email == "admin2@swappy.com" || hasSub ? (
+        {(user.email && user.email == "admin2@swappy.com") || hasSub ? (
           <Link href="/post/new" className={cn(buttonVariants({}))}>
             <Icons.add className="w-3 h-3 mr-2" /> New Post
           </Link>

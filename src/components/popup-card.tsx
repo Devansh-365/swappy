@@ -90,7 +90,7 @@ export default function PopupCard({
       }
       upChildren={
         <>
-          {hasSub || user.email == "admin2@swappy.com" ? (
+          {hasSub || (user.email && user.email == "admin2@swappy.com") ? (
             <>
               <div className="relative mx-auto max-w-3xl py-6 lg:py-10 z-[100] overflow-y-scroll">
                 <div className="flex items-start justify-between">
