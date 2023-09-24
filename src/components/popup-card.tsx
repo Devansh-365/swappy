@@ -7,6 +7,7 @@ import {
   Building2,
   MapPin,
   MessageCircle,
+  Smartphone,
   Tags,
   User2,
 } from "lucide-react";
@@ -156,6 +157,17 @@ export default function PopupCard({
                       </span>
                     </h5>
                     <p>{role.opinion}</p>
+                  </div>
+                )}
+                {role.phoneNum && (
+                  <div className="mb-4">
+                    <h5 className="mb-2 flex items-center">
+                      <Smartphone className="w-5 h-5 mr-2 rounded-full text-white p-1 bg-pink-500" />{" "}
+                      <span className="font-semibold text-lg">
+                        Contact via Phone Number
+                      </span>
+                    </h5>
+                    <p>{role.phoneNum}</p>
                   </div>
                 )}
               </div>
