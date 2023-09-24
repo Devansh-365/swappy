@@ -42,7 +42,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";
 import { Job } from "@prisma/client";
-import validator from "validator";
 
 const locations = [
   { label: "Remote work", value: "remote" },
